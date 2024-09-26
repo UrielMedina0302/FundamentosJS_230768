@@ -43,6 +43,7 @@ console.log(typeof(Producto__SKU))
 console.log("%c2.- Objeto", style_console);
 let Producto =
 {
+    ID: 6969,
     Nombre : "Tenis Deportivos",
     Marca : "NIke",
     Modelo :"Jordan `24",
@@ -84,7 +85,7 @@ let Producto2 =
     Imagen:"", 
     SKU: "009481D-0356",
     Barcode:888392491626,
-    CAtegorias: ["Deportes","Lentes", "Hombre", "Accesorios"]
+    Categorias: ["Deportes","Lentes", "Hombre", "Accesorios"]
 
 }
 
@@ -99,6 +100,7 @@ let Comprador =
     SaldoActual: 14000.00
 }
  let Pedido ={
+    ID: 69697,
     Producto_Clave:316,
     Comprador_Clave: 3216,
     Cantidad: 2,
@@ -109,9 +111,9 @@ let Comprador =
  // En base a los objetos necesitamos calcular el costo de la compra y si se alcanza con su saldo a favor
 
  let{Producto__Precio2: Clave}= Producto2;
- let{Pedido_Cantidad: Cantidad} = Pedido;
- let{Cliente_SaldoActual:SaldoActual}=Comprador;
- let Costo_Compra=Producto__Precio * Pedido_Cantidad;
+ let{ Cantidad:Pedido_Cantidad} = Pedido;
+ let{SaldoActual:Cliente_SaldoActual}=Comprador;
+ let Costo_Compra= Producto__Precio * Pedido_Cantidad;
  
  console.log(`El cliente ha agregado a su carrito de compras ${Pedido_Cantidad} unidades, con un costo total de : $${Costo_Compra}`)
  if(Costo_Compra<Cliente_SaldoActual)
@@ -152,10 +154,108 @@ console.log("Despues de haber agregado las propiedades Dirección, Tipo, Activid
 console.table(Comprador)
 
 //Eliminar propiedades existentes de un Objeto
-console.log("%c5.- Eliminar propiedades existentes de un Objeto", style_console);
+console.log("%c6.- Eliminar propiedades existentes de un Objeto", style_console);
 console.log("La estructura y valores del objeto PEDIDO son previos  a la modificación:")
 console.table(Pedido)
 
 delete Pedido.TipoPago
 console.log("Despues de la modificación...")
 console.table(Pedido)
+
+
+//
+console.log("%c7.- Métodos para controlar la mutabilidad de los Objetos, congelación (FREEZE)", style_console);
+//Si deseamos no permitir que los objetos sean modificados ni en la estructura, ni un valorutilizaremosel método FREEZE (Congelar)
+console.log(`La estructura actual del objeto COMPRADOR es: `)
+console.table(Comprador)
+Object.freeze(Comprador)
+//Intentamos agregar, eliminar o modificar los valores de sus propiedades
+Comprador.FechaUltimaCompra = "05/09/22024  10:15:25"
+delete Comprador.Tipo;
+Comprador.Direccion="CAlle 16 de Septiembre #102, Col. Manantiales, Huauchinango, Puebla, México";
+console.log(`Verificamos si se realizaron los cambios en el Objeto Comprador:`)
+console.table(Comprador)
+
+console.log("%c8.- Métodos para controlar la mutabilidad de los Objetos, Sellado (SEAL)", style_console);
+//Sin embargo, en el caso que deesemos poder podificar los valores de las propiedades del Objeto, pero no su estructura, usaremos SEAL
+console.log("Objeto antes de ser modificado: ")
+console.table(Pedido)
+//Sellamos el objeto
+Object.seal(Pedido)
+//Intentamos modificar su estructura
+Pedido[`FechaPedido`]="25/09/2024 11:05:03" 
+delete Pedido[`Cantidad`]
+console.log(`Verifiacamos se se realizaron los cambios en el objeto PEDIDO: `)
+console.table(Pedido)
+//Ahora intentamos modificar el valor de las propiedades
+Pedido.Cantidad= 5
+console.log(`VErificamos si se realizaron los cambios en el Objeto PEDIDO: `)
+console.table(Pedido)
+
+// let spotifyUser=
+// {
+//     name: "",//congelado
+//     nickname: "",//sellado
+//     email:"", //sellado
+//     pasword: "", //sellado
+//     rol:"", //sellado
+//     since:"",//congelado
+//     playList: ["Las domingueras","Carnita Asada", "Pa` trapear"] // normal modificado o eliminado
+// }
+
+console.log("%c9.- Desestructuración de 2 o má Objetos", style_console);
+let {Precio: productoPrecio, Marca: productoMarca} = Producto 
+let {Correo: clienteCorreo, PaisOrigen: clientePais, SaldoActual: clienteSaldo, Tipo: clienteTipo}= Comprador
+
+//Transformar valores cuantitativos a cualitativos
+
+if(productoPrecio>2000)
+    productoPrecio = "Caro"
+else
+    productoPrecio = "Barato"
+
+    if(clienteSaldo>0)
+        clienteSaldo="A favor"
+    else if(clienteSaldo<0)
+        clienteSaldo="En contra"
+    else
+    clienteSaldo="Sin deuda"
+
+//Transformar valores cualitativos en cuantitativos
+
+let clienteNivel;
+
+if(clienteTipo=="Premium")
+    clienteNivel=1
+if(clienteTipo=="Freemium")
+    clienteNivel=2
+if(clienteTipo=="No identificado")
+    clienteNivel=3
+
+//Clasificacmios al cliente por su Pais de Origen
+if(clientePais == "México")
+    clientePais="Nacional"
+else
+    clientePais="Extranjero"
+
+//OLE- Objet Literal Ennhacement
+
+let datosClientesPromociones = {clienteCorreo, clientePais, clienteNivel, clienteSaldo,productoMarca, productoPrecio}
+
+//El nuevo objeto que creamos seria un objeto de la información que enviaremos el area de Narketing para la difusion deproductos
+console.log("Los datos del cliente y sus habitos de comnpra son: ")
+console.table(datosClientesPromociones)
+
+//Operaciones sobre objetos
+//Unión de objetos
+console.log("%c10.- Unión de Objetos usando el método de asignación (ASSING)", style_console);
+
+console.log("Imprimir la estrtuctura y valores del Objeto PRODUCTO")
+console.table(Producto);
+
+console.log("Imprimir la estrtuctura y valores del Objeto PRODUCTO")
+console.table(Producto);
+// Suponiendoo que el usuario ya realizo el pago elm pedido se convertira en una VENTA que requiere información de ambos objetos
+const Venta = Object.assign(Producto, Pedido)
+console.log("Consultamos este nuevo objeto VENTA")
+console.table(Venta)
