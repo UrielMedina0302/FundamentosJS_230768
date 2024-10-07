@@ -306,4 +306,4 @@ console.log(`Esta el objeto de Producto Sellado ? : ${Object.isSealed(Producto)}
 //Modificamos la estructura de producto, agregando una nueva propiedad
 Producto[`isLegacy`]=false;
 console.log(Producto)
-console.log(Venta2)
+console.table(Venta2)
