@@ -129,3 +129,139 @@ switch(true){
 }
 
 console.log(`Dado que nació en el año 2005 soy de la generación ${asignaGeneraciion(2005)}`)
+
+
+console.log("%c4.- Manejo de Excepciones (TRY /CATCH)", style_console);
+
+//En algunas ocaciones existiran errores que no son culpa del programa, si no del usuario, la red, el so o incluso de un maddleware., pero si duda debenmos controlar para evitar las fallas de ejecucion 
+
+console.log("Intentamos dividir :  0/10, el resultado es: ")
+try{
+    let result= 0/10;//Dividir un entero entre 0
+    console.log(result)
+}
+catch(error)
+{
+    console.log("Ocurrio un error: "+ error.message);
+}
+console.log("Intentamos dividir : 10 /0, el resultado es: ")
+try{
+    let result= 10/0;//Dividir un entero entre 0
+    console.log(result)
+}
+catch(error)
+{
+    console.log("Ocurrio un error: "+ error.message);
+}
+console.log("Intentamos dividir : 10/a, el resultado es: ")
+try{
+    let result= 10/a;//Dividir un caracter entre 10
+    console.log(result)
+}
+catch(error)
+{
+    console.log("Ocurrio un error: "+ error.message);
+}
+console.log("Intentamos dividir :  el valor de la variable a/0, el resultado es: ")
+try{
+    let result= a/0;//Dividir un entero entre 0
+    console.log(result)
+}
+catch(error)
+{
+    console.log("Ocurrio un error: "+ error.message);
+}
+
+console.log("Intentamos dividir : el valor de la variable x / entre el valor de la varibale y, el resultado es: ")
+try{
+    let x=8, y=2,result= x/y;//Dividir un entero entre 0
+    console.log(result)
+}
+catch(error)
+{
+    console.log("Ocurrio un error: "+ error.message);
+}
+
+console.log("%c5.- Control de Ciclos (BREAK/CONTINUA)", style_console);
+//En ocaciones sera importsnte detener un clico de manera abrupta para controlar casos especiales en un ciclo
+
+console.log("Vamos a contar del 1 al 10 ...");
+for(let num=1;num<=10;num++)
+    console.log(num)
+
+console.log("Ahora necesitamos que si llega a 7 pares de contar.. suponiendo que solo por hoy es de mala suerte...")
+for(let num=1;num<=10;num++)
+    if(num==7)
+        break;
+    else
+    console.log(num)
+
+    console.log("Ahora necesitamos que si llega a 7 te saltes ese numero y continues")
+for(let num=1;num<=10;num++)
+    if(num==7)
+        continue;
+    else
+    console.log(num)
+
+console.log("%c.- Ciclo iterativo(For)", style_console);
+
+//Recorre de manera iterativa (i), de incremental o decremental
+
+console.log("Los días de la semana son: ")
+let dias = ["Domingo", "Lunes", "Martes","Miercoles","Jueves","Viernes","Sabado",]
+
+for(let i=0;i<dias.length;i++)
+    console.log(dias[i])
+
+console.log("Ahora vamos a imprimir los meses en orden descendente...")
+
+const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", " Diciembre"] 
+for(let i=11;i>=0;i--)
+    console.log(meses[i])
+
+console.log("%c7.- Ciclo Condicionales-(while)", style_console);
+//Estos ciclos (BUCKLE) dependen de una condición para continuar ejecutandose
+
+let finDeSemana = false;
+let j=0;
+let mensaje="";
+while(j<=dias.length)
+{
+   
+    switch(j)
+    {
+        case 0:
+            finDeSemana=true;
+            mensaje = "Mimimngo... ZZZzzzZZZzzZ";
+            break;
+        case 1:
+            finDeSemana=false
+            mensaje ="Lunes de garfield";
+            break;
+        case 2:
+            finDeSemana=false;
+            mensaje ="El sufrimiento apenas comienza";
+            break;
+        case 3:
+            finDeSemana=false;
+            mensaje ="Ombligo de sufrimineto";
+            break;
+        case 4:
+            finDeSemana=false;
+            mensaje ="Animo ya casi acaba tu sufrimiento";
+            break;    
+        case 5:
+            finDeSemana=false;
+            mensaje ="Viernesito de ver maraton de anime";
+            break;
+        case 6:
+            finDeSemana=true;
+            mensaje ="San sabadito";
+            break;
+        }
+        if(!finDeSemana){
+        console.log(`Dia ${j} ${dias[j]}`)
+        console.log(`Mensaje del dia ${mensaje}`)
+    }
+        j++;    
+}
