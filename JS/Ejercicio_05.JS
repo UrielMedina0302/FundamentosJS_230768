@@ -265,3 +265,102 @@ while(j<=dias.length)
     }
         j++;    
 }
+
+console.log("%c8.- Ciclo Condicionales- que se ejecuta al menos una vez- (do while)", style_console);
+//simulamos una lista de episodios de una temporada
+let episodios = [
+    "",
+    "",
+    "",
+    "",
+    ""
+]
+let indice = 0;
+let continuarviendo = true;
+//Esta variable simula la decision del usuario de continuar viendo
+
+do{
+    console.log(`Reproduciendo ${episodios[indice]}`);
+    //simulamos la reproduccion del episodio
+    indice++;
+
+    //Simulamos la pregunta al usuario si deseae continuar viendo
+    if(indice<episodios.length){
+        continuarviendo=confirm("¿Deseas continuar con el siguiente episodio?")
+    }else{
+        continuarviendo = false;
+
+    }
+}while(continuarviendo && indice < episodios.length)
+
+    console.log("Fin de la reproducción")
+
+    console.log("%c9.- Ciclos parar recorrer elementos finitos- (FOR ... OF)", style_console);
+
+    let seriesTrending =[
+        {nombre: "Black Clover", temporadas:  4, totalviewers: "1.5M", totalReproducciones: "3.6M"},
+        {nombre: "Demon Slayer", temporadas:  5, totalviewers: "1.5M", totalReproducciones: "3.6M"},
+        {nombre: "Los siete pecados capitales", temporadas:  5, totalviewers: "1.5M", totalReproducciones: "3.6M"},
+        {nombre: "Naturo", temporadas:  6, totalviewers: "1.5M", totalReproducciones: "3.6M"},
+        {nombre: "My hero academia", temporadas:  4, totalviewers: "1.5M", totalReproducciones: "3.6M"}
+    ];
+
+    //Usando}/{
+
+    for(let serie of seriesTrending){
+        console.log(`serie: ${serie.nombre}, Temporadas: ${serie.temporadas}`)
+    }
+    try{
+        console.log(`La última serie leida fue: ${serie.nombre}`);
+    }
+    catch(error){
+        console.log("Mensaje de error: " + error.message)
+    }
+
+    console.log("%c10.- Ciclos parar recorrer elementos finitos- (FOR ... IN)", style_console);
+
+    //Usando for ...in parar recorrer cada serie
+    for(let i in seriesTrending){
+        console.log(`serie ${parseInt(i) +1}:`);
+        for(let propiedad in seriesTrending[i]){
+            console.log(`${propiedad}: ${seriesTrending[i][propiedad]}`)
+        }
+        console.log("---------------")
+    }
+
+    console.log("%c11.- Ciclos parar recorrer elementos finitos- (FOR ... IN)", style_console);
+
+    let seriesTrending2=[
+        {nombre: "Black Clover", temporadas:  4, totalviewers: 1500000, totalReproducciones: 3600000},
+        {nombre: "Demon Slayer", temporadas:  5, totalviewers: 3000000, totalReproducciones: 3966640},
+        {nombre: "Los siete pecados capitales", temporadas:  5, totalviewers: 1600000, totalReproducciones: 3800000},
+        {nombre: "Naturo", temporadas:  6, totalviewers: 1500000, totalReproducciones: 3700000},
+        {nombre: "My hero academia", temporadas:  4, totalviewers: 9000000, totalReproducciones:2300000}
+    ];
+
+    //Usando forEach para recorrer cada serie y cacular la calificacion
+    seriesTrending2.forEach=((serie, index) => {
+        let calificacion = (serie.reproducciones / serie.viewers).toFixed(2)
+    //caclcula la caclificaciopn y lo redondeaa 2 decimales
+        console.log(`serie: ${index + 1}:`);
+        console.log(`Nombre: ${serie.nombre}`);
+        console.log(`Temporadas: ${serie.temporadas}`);
+        console.log(`Viewers : ${serie.viewers}`);
+        console.log(`Reproducciones ${serie.reproducción}`);
+        console.log(`Calificación:  ${calificacion} `);
+        console.log(`--------------------`)
+    });
+
+//Usando filter para filtrar, y map para transformar la informacion
+//Lista de series que queremos verificar
+let seriesDeseadas=["Black Clover", "Naruto", "My hero academia"];
+
+//Usando map e includes para filtrar y obtener los nombre de series con 3 temporadas
+let SeriesconCuatroTemporadas=seriesTrending2
+.filter(serie=>serie.temporadas <=4)//Filtramos las series que tiene temporadas
+.map(serie => serie.nombre)//Obtenemos solo los nombres de esas series
+.filter(nombre=>seriesDeseadas.includes(nombre));//filtramos las que estan en la lista de series
+
+//Mostrar resultados
+console.log("series con 3 temporadas que estan en listas deseadas: ")
+console.log(SeriesconCuatroTemporadas);
