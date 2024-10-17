@@ -9,12 +9,13 @@ Previo a iniciar el desarrolo de software para web usando el framework de NodeJS
 
 |No.|Descripción|Potenciador| Estatus|
 |--|--|--|--|
-|1.|Metodología de Evaluación|1| ✅Finalizado|
-|2.|Inicialización del Proyecto de Fundamentos de Js|5| ✅Finalizado|
-|3.|Ejercicio 01: Declaración de Variables en JS(Undefined/Boolean/Number)|10|✅Finalizada|
-|4.|Ejercicio 02: Declaración de Variables en JS(String/BigInt/Symbol/Null/Function)|6| ✅Finalizada|
-|5.|Ejercicio 03: Objetos |19| ✅Finalizada|
-|6.|Ejercicio 04: Arreglos|18| ⭐Activa|
+||1.|Metodología de Evaluación|1| ✅Finalizada|
+|2.|Inicialización del Proyecto de Fundamentos de JS|8|✅Finalizada|
+|3.|Ejercicio 01: Declaración de variables en JS|6|✅Finalizada|
+|4.|Ejercicio 02: Tipos de datos en JS|10|✅Finalizada|
+|5.|Ejercicio 03: Objetos|19|✅Finalizada|
+|6.|Ejercicio 04: Arreglos|18|✅Finalizada|
+|7.|Ejercicio 05: Ciclos y Sentencias de Control en JS|16|✅Finalizada|
 
 ### Autor
 Uriel Abdallah Medina Torres
